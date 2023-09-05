@@ -1,0 +1,1 @@
+Este repositorio ha sido creado para alojar el código y la documentación relacionados con el reto técnico que he completado como parte de mi proceso de postulación.
