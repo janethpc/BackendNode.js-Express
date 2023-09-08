@@ -1,14 +1,26 @@
-const express = require('express'); 
-const userSchema = require('../models/user')
+import { Router } from 'express'; 
+import userSchema from '../models/user.js';
 
-const router = express.Router();
+const router = Router();
 
-router.post('/users', (req, res) => {
-    const user = userSchema(req.body);
-    user
-        .save()
-        .then((data) => res.json(data))
-        .catch((error) => res.json({message: error}))
+
+router.post('/users', async (req, res) => {
+    try{
+        const user = new userSchema(req.body);
+        const data = await user.save();
+        res.json(data)
+    }catch(error){
+        res.status(500).json({message: error.message})
+    }
 })
 
-module.exports = router
+router.get('/users', async (req, res) => {
+    try{
+        const users = await userSchema.find()
+        res.json(users)
+    }catch(error){ 
+        res.status(500).json({message: error.message})
+    }
+})
+
+export default router;

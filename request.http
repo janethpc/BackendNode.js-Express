@@ -3,7 +3,10 @@ POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "bertha perez",
-    "age": 31,
-    "email": "bertha@gmail.com"
+    "name": "maria cruz",
+    "age": 40,
+    "email": "maria@gmail.com"
 }
+
+###
+GET http://localhost:3000/api/users HTTP/1.1
