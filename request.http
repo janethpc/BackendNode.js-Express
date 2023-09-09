@@ -26,3 +26,30 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/api/users/64fab55bac91ce0bb90fbc21 HTTP/1.1
+
+### crear una nueva categoria 
+POST http://localhost:3000/api/category HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "automotriz",
+    "description": "articulos para vehiculos"
+}
+
+### leer todos los categorias 
+GET http://localhost:3000/api/category HTTP/1.1
+
+### leer una sola categoria 
+GET http://localhost:3000/api/category/jardineria HTTP/1.1
+
+### editar una categoria 
+PUT http://localhost:3000/api/category/jardineria HTTP/1.1
+Content-Type: application/json
+
+{
+    "newname": "ferreteria",
+    "description": "articulos varios" 
+}
+
+### eliminar categoria 
+DELETE http://localhost:3000/api/category/ferreteria HTTP/1.1

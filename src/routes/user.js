@@ -1,10 +1,10 @@
 import { Router } from 'express'; 
 import userSchema from '../models/user.js';
 
-const router = Router();
+const routerUser = Router();
 
 // crear un nuevo usuario
-router.post('/users', async (req, res) => {
+routerUser.post('/users', async (req, res) => {
     try{
         const user = new userSchema(req.body);
         const data = await user.save();
@@ -15,7 +15,7 @@ router.post('/users', async (req, res) => {
 });
 
 // lee todos los usuarios
-router.get('/users', async (req, res) => {
+routerUser.get('/users', async (req, res) => {
     try{
         const users = await userSchema.find()
         res.json(users)
@@ -25,7 +25,7 @@ router.get('/users', async (req, res) => {
 }); 
 
 // lee un solo usuario 
-router.get('/users/:id', async (req, res) => {
+routerUser.get('/users/:id', async (req, res) => {
     try{
         const {id} = req.params;
         const user = await userSchema.findById(id);
@@ -40,7 +40,7 @@ router.get('/users/:id', async (req, res) => {
 });
 
 // editar usuario 
-router.put('/users/:id', async (req, res) => {
+routerUser.put('/users/:id', async (req, res) => {
     try{
         const {id} = req.params;
         const {name, age, email} = req.body;
@@ -56,7 +56,7 @@ router.put('/users/:id', async (req, res) => {
 });
 
 //elinar usuario 
-router.delete('/users/:id', async (req, res) => {
+routerUser.delete('/users/:id', async (req, res) => {
     try{
         const {id} = req.params;
         const user = await userSchema.findByIdAndRemove(id);
@@ -70,4 +70,4 @@ router.delete('/users/:id', async (req, res) => {
     }
 });
 
-export default router;
+export default routerUser;

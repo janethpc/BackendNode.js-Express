@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
 import router from './routes/user.js';
+import categoryRout from './routes/category.js';
 
 //cargar variable de entonro 
 config()
@@ -19,6 +20,7 @@ server.use(express.json())
 
 //url api
 server.use('/api', router )
+server.use('/api', categoryRout)
 
 //coneccion
 mongoose
