@@ -10,3 +10,19 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/users HTTP/1.1
+
+###
+GET http://localhost:3000/api/users/64fab55bac91ce0bb90fbc21 HTTP/1.1
+
+###
+PUT http://localhost:3000/api/users/64fab55bac91ce0bb90fbc21 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "maria cruz canales",
+    "age": "25",
+    "email": "ejemplo@gmail"
+}
+
+###
+DELETE http://localhost:3000/api/users/64fab55bac91ce0bb90fbc21 HTTP/1.1
