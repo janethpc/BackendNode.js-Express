@@ -70,3 +70,18 @@ GET http://localhost:3000/api/products HTTP/1.1
 
 ### leer un solo producto por nombre 
 GET http://localhost:3000/api/products/falda HTTP/1.1
+
+### editar un producto por su nombre 
+PUT http://localhost:3000/api/products/falda HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "falda",
+    "newname": "falda de cuero",
+    "price": 150,
+    "description": "falda de cuero para mujer",
+    "category": "ropa"
+}
+
+### eliminar un productp
+DELETE http://localhost:3000/api/products/iphne 11 HTTP/1.1
