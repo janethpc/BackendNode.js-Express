@@ -45,23 +45,31 @@ routerProduct.post('/products', async (req, res) => {
 });
 
 //leer todos los productos 
-/*routerProduct.post('/products', async (req, res) => {
+routerProduct.get('/products', async (req, res) => {
     try{
-
+        const products = await productsModel.find();
+        res.json(products)
     }catch (error) {
         res.status(500).json({message: error.message})
     }
 });
+
 //ller un solo producto
-routerProduct.post('/products', async (req, res) => {
+routerProduct.get('/products/:name', async (req, res) => {
     try{
-
+        const {name} = req.params;
+        const oneProduct = await productsModel.findOne({name})
+        if(!oneProduct){
+            return res.status(404).json({message: 'product not found'})
+        } res.json(oneProduct)
     }catch (error) {
         res.status(500).json({message: error.message})
     }
 });
+
+
 //editar un producto 
-routerProduct.post('/products', async (req, res) => {
+/*routerProduct.post('/products', async (req, res) => {
     try{
 
     }catch (error) {

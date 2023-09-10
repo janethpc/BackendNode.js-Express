@@ -64,3 +64,9 @@ Content-Type: application/json
     "description": "laptop lenovo de uso optimas condiciones",
     "category": "computacion"
 }
+
+###leer todos los productos 
+GET http://localhost:3000/api/products HTTP/1.1
+
+### leer un solo producto por nombre 
+GET http://localhost:3000/api/products/falda HTTP/1.1
