@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import productsModel from '../models/product.js';
 import categoryModels from '../models/category.js';
+import { productSchema } from '../schemas/product.schema.js';
+import { validateSchema } from '../middleware/validator.middleware.js';
 
 const routerProduct = Router();
 
 //crear un producto 
-routerProduct.post('/products', async (req, res) => {
+routerProduct.post('/products', validateSchema(productSchema), async (req, res) => {
     try {
         const { name, price, description, category } = req.body;
         //buscar categoria por nombre 
