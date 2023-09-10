@@ -1,9 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
+import authRouter from './routes/auth.js';
 import routerUser from './routes/user.js';
 import categoryRout from './routes/category.js';
 import routerProduct from './routes/product.js';
+
 
 
 
@@ -12,6 +16,9 @@ config()
 
 const server = express(); 
 const port = process.env.PORT || 3000;
+
+server.use(morgan('dev')); //mostrar un mensaje corto por consola
+server.use(cookieParser())
 
 //ROUTE
 server.get('/', (req, res) => {
@@ -22,6 +29,7 @@ server.get('/', (req, res) => {
 server.use(express.json())
 
 //url api
+server.use('/api', authRouter)
 server.use('/api', routerUser );
 server.use('/api', categoryRout);
 server.use('/api', routerProduct);
