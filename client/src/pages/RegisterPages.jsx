@@ -1,16 +1,73 @@
+import { useForm } from 'react-hook-form';
+import {registerRequest} from '../api/auth'
+
 
 const RegisterPages = () => {
+
+    //const { signup } = useAuth();
+
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = handleSubmit( async (values) => {
+      const res = await registerRequest(values);
+      console.log(res);
+   })
+
   return (
-    <>
-        < form>
-            <input type="text" name="name" />
-            <input type="number" name="age" min={0} max={6}/>
-            <input type="email" name="email"/>
-            <input type="password" name="password"/>
+    <div className="container text-center mt-5">
+      <h2>Registro</h2>
+      <form 
+       onSubmit={onSubmit}
+      >
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control rounded"
+            placeholder="Name"
+            {...register('name', { required: true })}
+          />
+        </div>
 
-        </form>
-    </>
-  )
-}
+        <div className="mb-3">
+          <input
+            type="number"
+            className="form-control rounded"
+            placeholder="Age"
+            {...register('age', { required: true })}
+          />
+        </div>
 
-export default RegisterPages
+        <div className="mb-3">
+          <input
+            type="email"
+            className="form-control rounded"
+            placeholder="Email"
+            {...register('email', { required: true })}
+          />
+        </div>
+
+        <div className="mb-3">
+          <input
+            type="password"
+            className="form-control rounded"
+            placeholder="Password"
+            {...register('password', { required: true })}
+          />
+        </div>
+
+        <div className="mb-3">
+          <button type="submit" className="btn btn-primary">
+            Registrarse
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default RegisterPages;
+
+
+
+
+
