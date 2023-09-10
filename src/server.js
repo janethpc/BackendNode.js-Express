@@ -1,8 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
-import router from './routes/user.js';
+import routerUser from './routes/user.js';
 import categoryRout from './routes/category.js';
+import routerProduct from './routes/product.js';
+
+
 
 //cargar variable de entonro 
 config()
@@ -19,8 +22,9 @@ server.get('/', (req, res) => {
 server.use(express.json())
 
 //url api
-server.use('/api', router )
-server.use('/api', categoryRout)
+server.use('/api', routerUser );
+server.use('/api', categoryRout);
+server.use('/api', routerProduct);
 
 //coneccion
 mongoose

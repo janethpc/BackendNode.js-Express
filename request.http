@@ -53,3 +53,14 @@ Content-Type: application/json
 
 ### eliminar categoria 
 DELETE http://localhost:3000/api/category/ferreteria HTTP/1.1
+
+### crear un producto 
+POST http://localhost:3000/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "laptop lenovo",
+    "price": 20000,
+    "description": "laptop lenovo de uso optimas condiciones",
+    "category": "computacion"
+}
