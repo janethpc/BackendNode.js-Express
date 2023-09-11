@@ -17,7 +17,9 @@ authRouter.post('/register', validateSchema(registerSchema), async (req, res) =>
     const {name, age, email, password} = req.body;
     
     try{
-        
+        const userFound = await User.findOne({email})
+        if(userFound) return res.status(400).json(['the email already exists']);
+
         const hash = await bcrypt.hash(password, 10) //encripta la contraseña
 
         const newUser = new User({
