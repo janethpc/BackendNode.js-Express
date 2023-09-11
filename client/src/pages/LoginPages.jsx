@@ -6,7 +6,7 @@ import { Link, useNavigate  } from 'react-router-dom';
 const LoginPages = () => {
 
   const {register, handleSubmit, formState: {errors} } = useForm()
-  const {signin, allErrors, isAdmin} = useAuth();
+  const {signin, allErrors} = useAuth();
   const navigate = useNavigate();
 
 
@@ -69,7 +69,7 @@ const LoginPages = () => {
           </button>
         </div>
       </form>
-          <p>Don't have an account? <Link to="/register"> Sing up </Link></p>
+          <p> Dont have an account? <Link to="/register"> Sing up </Link></p>
       </div>
       </div>
     </>

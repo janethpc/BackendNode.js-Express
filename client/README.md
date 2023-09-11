@@ -1,8 +1,34 @@
-# React + Vite
+# Client Project README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Name: client
 
-Currently, two official plugins are available:
+- **Private**: true
+- **Version**: 0.0.0
+- **Type**: module
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Scripts
+
+1. **dev**: Start the Vite development server.
+2. **build**: Build the project using Vite.
+3. **lint**: Run ESLint for linting with specific configurations.
+4. **preview**: Start a Vite preview server.
+
+### Dependencies
+
+- axios: ^1.5.0
+- js-cookie: ^3.0.5
+- react: ^18.2.0
+- react-dom: ^18.2.0
+- react-hook-form: ^7.46.1
+- react-router-dom: ^6.15.0
+
+### Development Dependencies
+
+- @types/react: ^18.2.15
+- @types/react-dom: ^18.2.7
+- @vitejs/plugin-react: ^4.0.3
+- eslint: ^8.45.0
+- eslint-plugin-react: ^7.32.2
+- eslint-plugin-react-hooks: ^4.6.0
+- eslint-plugin-react-refresh: ^0.4.3
+- vite: ^4.4.5
