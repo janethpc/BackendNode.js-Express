@@ -34,7 +34,7 @@ authRouter.post('/register', validateSchema(registerSchema), async (req, res) =>
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // Solo seguro en producción
+            secure: true, 
             sameSite: "none", // Cambiado a "none" para habilitar cookies de terceros
         })
 
@@ -105,6 +105,7 @@ authRouter.get('/profile' , authrequired, async (req, res) => {
         res.status(500).json({message: error.message})
     }
 });
+
 
 authRouter.get('/verify', async (req, res) => {
 

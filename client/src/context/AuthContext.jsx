@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
     } catch (error) {
       console.log(error);
-      // setAllError(error.response.data.message);
+      setAllError([...allErrors, error.response.data]);
     }
   };
 
@@ -68,32 +68,32 @@ export const AuthProvider = ({ children }) => {
   }, [allErrors])
 
   useEffect(() => {
-    const checkLogin = async () => {
+    async function checkLogin() {
       const cookies = Cookies.get();
-      if (!cookies.token) {
-        setIsAuthenticated(false);
-        //isAuthenticated(false);
-        setLoading(false)
-        return setUser(null);
-      }
 
-      try {
-        const res = await verifyTokenReq(cookies.token);
-        if (!res.data) {
-          setIsAuthenticated(false);
-          setLoading(false);
-          return
-        } 
-        setIsAuthenticated(true);
-        setUser(res.data);
-        setLoading(false);
-      } catch (error) {
+      if(!cookies.token){
         setIsAuthenticated(false);
-        setLoading(false);
-        setUser(null)
+        setLoading(false)
+        return setUser(null)
       }
-    };
-    checkLogin();
+      try{
+        const res = await verifyTokenReq(cookies.token);
+        if(!res.data){
+          setIsAuthenticated(false),
+          setLoading(false)
+          return;
+        }
+        setIsAuthenticated(true)
+        setUser(res.data)
+        setLoading(false)
+      }catch (error) {
+        console.log(error)
+        setIsAuthenticated(false)
+        setUser(null)
+        setLoading(false)
+      }
+       }
+       checkLogin();
   }, []);
 
   return (

@@ -18,13 +18,11 @@ const LoginPages = () => {
     <>
       <div className="d-flex justify-content-center align-items-center h-100 container text-center">
         <div className="row form-signin mx-auto">
-        {
-        allErrors.map((error, i) => (
-          <>
-          <alert key={i} className="alert alert-danger" role="alert"> {error} </alert>
-          </>
-        ) )
-      }
+        {allErrors.map((error, i) => (
+            <div key={i} className="alert alert-danger" role="alert">
+              {error.message}
+            </div>
+          ))}
         <form onSubmit={onSubmit} className='col text-center'>
         <h2 className="h3 mb-3 fw-normal"> Login </h2>
         <div className="mb-3 form-floating">
@@ -58,7 +56,7 @@ const LoginPages = () => {
             errors.name && (
               <>
               <br/>
-              <alert className="alert alert-danger" role="alert"> password is required </alert>
+              <div className="alert alert-danger" role="alert"> password is required </div>
               <br/>
               </>
             )
