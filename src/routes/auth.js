@@ -26,7 +26,7 @@ authRouter.post('/register', validateSchema(registerSchema), async (req, res) =>
             name,
             age,
             email,
-            password: hash
+            password: hash,
         });
 
         const userSaved = await newUser.save();
@@ -41,7 +41,7 @@ authRouter.post('/register', validateSchema(registerSchema), async (req, res) =>
         res.json({
             id: userSaved.id,
             name: userSaved.name,
-            email: userSaved.email
+            email: userSaved.email,
         })
     } catch(error){
         res.status(500).json({message: error.message})
@@ -51,7 +51,7 @@ authRouter.post('/register', validateSchema(registerSchema), async (req, res) =>
 
 //iniciar sesion
 authRouter.post('/login', validateSchema(loginSchema), async (req, res) => {
-    const { email, password, rol} = req.body;
+    const { email, password } = req.body;
     
     try{
         
@@ -77,7 +77,7 @@ authRouter.post('/login', validateSchema(loginSchema), async (req, res) => {
             id: userFound.id,
             name: userFound.name,
             email: userFound.email,
-            rol: rol ? userFound.rol : null,
+            rol:  userFound.role 
         });
     } catch(error){
         res.status(500).json({message: error.message})

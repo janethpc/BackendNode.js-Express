@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+
 
 const RegisterPages = () => {
 
@@ -105,6 +106,7 @@ const RegisterPages = () => {
           </button>
         </div>
       </form>
+      <p> Already have an account? <Link to="/login"> Sing up </Link></p>
     </div>
     </div>
   );

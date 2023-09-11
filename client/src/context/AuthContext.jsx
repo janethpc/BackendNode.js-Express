@@ -1,8 +1,9 @@
-import { createContext, useState, useContext } from "react";
-import {registerRequest} from '../api/auth'
-
+import { createContext, useState, useContext, useEffect } from "react";
+import {registerRequest, loginRequest} from '../api/auth'
+import { useNavigate  } from 'react-router-dom';
 
 export const AuthContext = createContext();
+
 
 export const useAuth = () => {
     const context = useContext(AuthContext)
@@ -22,17 +23,49 @@ export const AuthProvider = ({children}) => {
     const singUp = async (user) => {
        try{
         const res = await registerRequest(user);
-        const userDataWithRole = res.data;
-        const userIsAdmin = userDataWithRole.rol === "admin";
+       
         //console.log(res.data);
         setUser(res.data)
         setIsAuthenticated(true)
-        setIsAdmin(userIsAdmin)
+        
        }catch (error) {
             console.log(error.response.data)
             setAllError(error.response.data)
        }
     };
+
+    const signin = async (user, navigate) => {
+        
+
+        try {
+          const res = await loginRequest(user);
+          const userDataWithRole = res.data;
+          const userIsAdmin = userDataWithRole.rol === "admin";
+
+          setUser(res.data);
+          setIsAuthenticated(true);
+          setIsAdmin(userIsAdmin)
+
+          if (userIsAdmin) {
+            navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
+          } else {
+            navigate('/profile'); // Redirige a la ruta del usuario normal
+          }
+
+        } catch (error) {
+          console.log(error);
+          // setAllError(error.response.data.message);
+        }
+      };
+
+    useEffect(() =>{
+        if(allErrors.length > 0){
+           const timer = setTimeout(()=>{
+                setAllError([])
+            }, 3000)
+            return () => clearTimeout(timer)
+        }
+    }, [allErrors])
 
     return (
         <AuthContext.Provider value={{
@@ -40,7 +73,8 @@ export const AuthProvider = ({children}) => {
             user,
             isAuthenticated,
             isAdmin,
-            allErrors
+            allErrors,
+            signin
         }}>
             {children}
         </AuthContext.Provider>
