@@ -8,3 +8,5 @@ export const registerRequest = async (user) =>
 
 
 export const loginRequest = async (user) => await axios.post(`${API}/login`, user, {withCredentials: true})
+
+export const verifyTokenReq = () => axios.get(`${API}/verify`);

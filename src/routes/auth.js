@@ -5,8 +5,8 @@ import { createAccesToken } from "../libs/jwt.js";
 import { authrequired } from "../middleware/validateToken.js";
 import { validateSchema } from "../middleware/validator.middleware.js";
 import { registerSchema, loginSchema } from "../schemas/auth.schema.js";
-
-
+import jwt from 'jsonwebtoken'
+import { TOKEN_SECRET } from "../config.js";
 
 
 const authRouter = Router();
@@ -104,6 +104,25 @@ authRouter.get('/profile' , authrequired, async (req, res) => {
     } catch (error) {
         res.status(500).json({message: error.message})
     }
+});
+
+authRouter.get('/verify', async (req, res) => {
+
+        const {token} = req.cookies
+        if(!token) return res.status(401).json({message: 'Unauthorized'} )
+
+        jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+            if(err) return res.status(401).json({message: 'Unauthorized'})
+        
+            const userFound = await user.findById(user.id)
+            if (! userFound) return res.status(401).json({message: 'Unauthorized'})
+       
+       return res.json({
+        id: userFoundr._id,
+        name: userFound.name,
+        email: userFound.email
+       })
+        })
 })
 
 export default authRouter;
