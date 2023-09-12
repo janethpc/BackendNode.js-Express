@@ -25,8 +25,8 @@ const App = () => {
       <Route path='/register' element={<RegisterPages/>}/>
         
       <Route element={<ProtectedRouter/>}>
-      <Route path='/product' element={<Products/>}/>
-      <Route path='/product:id' element={<EditProducts/>}/>
+      <Route path='/products' element={<Products/>}/>
+      <Route path='/product' element={<EditProducts/>}/>
       <Route path='/profile' element={<UserProfile/>}/>
       <Route path='/profile/admin' element={<AdminProfile/>}/>
       <Route path='/category' element={<Categories/>}/>
