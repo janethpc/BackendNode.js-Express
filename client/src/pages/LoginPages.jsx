@@ -21,15 +21,15 @@ const LoginPages = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center h-100 container text-center">
+      <div className="container text-center" id='background'>
         <div className="row form-signin mx-auto">
         {allErrors.map((error, i) => (
-            <div key={i} className="alert alert-danger" role="alert">
+            <alert key={i} className="alert alert-danger" role="alert">
               {error.message}
-            </div>
+            </alert>
           ))}
         <form onSubmit={onSubmit} className='col text-center'>
-        <h2 className="h3 mb-3 fw-normal"> Login </h2>
+        <h2 className="h3 mb-3 fw-normal" id='colorFond'> Login </h2>
         <div className="mb-3 form-floating">
           <input
             type="email"
@@ -74,7 +74,7 @@ const LoginPages = () => {
           </button>
         </div>
       </form>
-          <p> Dont have an account? <Link to="/register"> Sing up </Link></p>
+          <p id='colorFond'> Dont have an account? <Link to="/register" id='colorFond'> Sing up </Link></p>
       </div>
       </div>
     </>

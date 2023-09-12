@@ -24,9 +24,11 @@ export const NavBarAdmin = () => {
                             </Link>
                         </ul>
                         <div className='aling-items-end'>
-                            <Link to='/login' className='nav-link'>
-                           <button className='btn btn-danger btn-sm'> Logout </button> 
+                            <button className='btn btn-danger btn-sm'>
+                            <Link to='/' className='nav-link '>
+                            Logout  
                             </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
