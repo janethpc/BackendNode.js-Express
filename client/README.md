@@ -32,3 +32,12 @@
 - eslint-plugin-react-hooks: ^4.6.0
 - eslint-plugin-react-refresh: ^0.4.3
 - vite: ^4.4.5
+
+## Admin Role Authorization
+
+In this application, an administrator role can be created from the backend. This role is granted certain privileges and access to specific routes within the system. For practical purposes, a test user has been created to demonstrate the functionality of the administrator role.
+
+### Test User Information
+
+- Email: [admin@example.com]
+- Password: [123456]
