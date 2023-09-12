@@ -1,13 +1,18 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate  } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const LoginPages = () => {
 
   const {register, handleSubmit, formState: {errors} } = useForm()
-  const {signin, allErrors} = useAuth();
+  const {signin, isAuthenticated, allErrors} = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated) navigate('/products')
+  }, [isAuthenticated]);
 
 
   const onSubmit = handleSubmit((data) => {

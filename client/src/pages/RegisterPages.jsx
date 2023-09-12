@@ -11,11 +11,11 @@ const RegisterPages = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if(isAuthenticated) navigate('/product')
+      if(isAuthenticated) navigate('/profile')
     }, [isAuthenticated]);
 
     const onSubmit = handleSubmit( async (values) => {
-      singUp(values)
+      singUp(values, navigate)
       
    });
 
