@@ -10,7 +10,7 @@ import Categories from './pages/Categories';
 import EditUsers from './pages/EditUsers';
 import EditProducts from './pages/EditProducts';
 import ProtectedRouter from './protectedRouter';
-
+import './App.css'
 
 
 const App = () => {
