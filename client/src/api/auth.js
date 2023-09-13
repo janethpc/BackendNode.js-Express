@@ -14,3 +14,7 @@ export const verifyTokenReq = () => axios.get(`${API}/verify`);
 
 
 export const getProductos = () => axios.get(`${API}/products`)
+
+export const getCategories = () => axios.get(`${API}/category`)
+
+export const getUsers = () => axios.get(`${API}/users`)

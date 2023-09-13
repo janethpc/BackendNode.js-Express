@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getProductos } from "../api/auth"
 import { NavBarAdmin } from "../components/NavBarAdmin"
 import { TableProduct } from "../components/tableProduct";
-
+import agregar from '../assets/images/agregar.png';
 
 
 const EditProducts = () => {
@@ -20,15 +20,17 @@ const EditProducts = () => {
       })
   }, []);
 
+ 
   return (
-    <div className="container-fluid aling-item-center">
-      <NavBarAdmin />
-      <h1>CRUD to the product</h1>
+    <div >
+      <div className="contairner text-center">
+              <NavBarAdmin />
+      <h1>CRUD to the Products</h1>
       <div className='row mt3'>
         <div className='col-md-4 offset-4'>
           <div className='d-grid mx-auto'>
-            <button>
-              <i className='fa-solid fa-circule-plus'></i> Añadir
+            <button className="btn ">
+              <img src={agregar} alt="añadir" width="50" height="50" className="d-inline-block" />
             </button>
           </div>
         </div>
@@ -48,23 +50,30 @@ const EditProducts = () => {
               </thead>
               <tbody className="table-group-divider">
                 {
+                  
                   products.map((product) => (
                     <>
+                    <tr key={product._id}>
+                        <th scope="row">#</th>
                       <TableProduct
                         key={product._id}
                         name={product.name}
                         price={product.price}
+                        category={product.category}
                         description={product.description}
                         id={product._id}
+
                       />
+                      </tr>
                     </>
                   ))
                 }
               </tbody>
             </table>
+          </div> 
           </div>
-        </div>
-      </div>
+    </div>
+    </div>
     </div>
   )
 }
