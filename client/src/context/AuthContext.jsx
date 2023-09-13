@@ -22,13 +22,22 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
 
-  const singUp = async (user) => {
+  const singUp = async (user, navigate) => {
     try {
       const res = await registerRequest(user);
+      const userDataWithRole = res.data;
+      const userIsAdmin = userDataWithRole.rol === "admin";
 
       //console.log(res.data);
       setUser(res.data)
       setIsAuthenticated(true)
+      setIsAdmin(userIsAdmin)
+
+      if (userIsAdmin) {
+        navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
+      } else {
+        navigate('/profile'); // Redirige a la ruta del usuario normal
+      }
 
     } catch (error) {
       console.log(error.response.data)

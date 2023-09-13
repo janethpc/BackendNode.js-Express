@@ -11,17 +11,17 @@ const RegisterPages = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-      if(isAuthenticated) navigate('/product')
+      if(isAuthenticated) navigate('/profile')
     }, [isAuthenticated]);
 
     const onSubmit = handleSubmit( async (values) => {
-      singUp(values)
+      singUp(values, navigate)
       
    });
 
   return (
-    
-    <div className="d-flex justify-content-center align-items-center h-100 container text-center">
+    <>
+    <div className="container text-center" id='backgroundRegister'>
       <div className="row form-signin mx-auto">
       {
         allErrors.map((error, i) => (
@@ -32,9 +32,10 @@ const RegisterPages = () => {
       }
       <form 
        onSubmit={onSubmit}
-       className='col'
+       className='col text-center'
+
       >
-        <h2 className="h3 mb-3 fw-normal"> Register Here </h2>
+        <h2 className="h3 mb-3 fw-normal" id='colorFond'> Register Here </h2>
         <div className="mb-3 form-floating">
           <input
             type="text"
@@ -104,11 +105,14 @@ const RegisterPages = () => {
           <button type="submit" className="btn btn-primary">
             Register
           </button>
-        </div>
-      </form>
-      <p> Already have an account? <Link to="/login"> Sing up </Link></p>
+          </div>
+          </form>
+    <p id='colorFond'> Already have an account? <Link to="/login" id='colorFond'> Sing up </Link></p>
+    
+   
     </div>
     </div>
+    </>
   );
 };
 

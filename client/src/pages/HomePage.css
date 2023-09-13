@@ -1,7 +1,28 @@
+#colorFond{
+    color: white;
+}
 
+#backgroundRegister{
+  border: 2px solid;
+  background-color: #0b2239;
+  width: 50%;
+  height: 50%;
+  margin-top: 7%;
+  top: 50%;
+  
 
+}
 
 #background{
-    margin: 0 auto;
-    padding: 2rem;
+    border: 2px solid; 
+    background-color: #0b2239;
+    width: 50%; /* Define el ancho que desees para el contenedor */
+    height: 50%; /* Define la altura que desees para el contenedor */
+    margin-top: auto; /* Centra el contenedor horizontal y verticalmente */
+    position: absolute;
+  left: 50%; /* Coloca el centro horizontalmente en relación al cuerpo de la página */
+  top: 50%; /* Coloca el centro verticalmente en relación al cuerpo de la página */
+  transform: translate(-50%, -50%); 
+  margin-bottom: 20px;
 }
+

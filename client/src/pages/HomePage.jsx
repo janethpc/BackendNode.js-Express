@@ -6,8 +6,8 @@ const HomePage = () => {
   return (
     <div className='container text-center' id='background'>
       <img src={comprasImage} alt="compras" />
-      <h1>Ready to Shop?</h1>
-      <p>Log in now or register to get started!</p>
+      <h1 id='colorFond'>Ready to Shop?</h1>
+      <p id='colorFond'>Log in now or register to get started!</p>
       <div>
         <div className='row justify-content-evenly'>
         <div className='col-4'>
