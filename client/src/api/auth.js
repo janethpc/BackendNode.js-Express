@@ -57,6 +57,7 @@ export const AddUser = async (user) => {
       "email": user.email,
       "password": user.password,
       "rol": user.rol
+      
     };
 
     const response = await axios.post(`${API}/users`, newObject);
@@ -82,3 +83,25 @@ export const EditCategory = async (categoryName, data) => {
 
 export const deleteCategory = (categoryName) => axios.delete(`${API}/category/${categoryName}`)
 
+export const deleteProduct = (productName) => axios.delete(`${API}/products/${productName}`)
+
+export const editProduct = async (nameProduct, data) => {
+  try {
+    
+    const newObject = {
+      "name": data.name,
+      "newname": data.newname,
+      "price": parseInt(data.price),
+      "description": data.description,
+      "category": data.category,
+    };
+
+    const response = await axios.put(`${API}/products/${nameProduct}`, newObject);
+
+    
+    response
+  } catch (error) {
+    console.error(error.response.data.message);
+    
+  }
+};

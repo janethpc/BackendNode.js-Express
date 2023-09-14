@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { getProductos } from "../api/auth"
 import { NavBarAdmin } from "../components/NavBarAdmin"
-import { TableProduct } from "../components/tableProduct";
+
 import agregar from '../assets/images/agregar.png';
 import { ModalProducts } from "../components/ModalProducts";
+import { TableProduct } from "../components/TableProduct";
 
 
 

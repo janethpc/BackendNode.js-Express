@@ -1,19 +1,22 @@
 import {useForm} from 'react-hook-form';
 import Modal from 'react-bootstrap/Modal'
-import { AddProduct } from '../api/auth';
+import { editProduct } from '../../api/auth';
 
 
-export const ModalProducts = ({show, handleClose}) => {
+export const ModalEditProduct = ({show, handleClose, productName}) => {
 
      const {register, handleSubmit, formState: {errors}} = useForm();
+     
+    const nameProduct = productName;
     
-     
-     const onSubmit = handleSubmit(async (data) => {
-          //console.log(data)
-          await AddProduct(data)
+    const onSubmit = handleSubmit(async (data) => {
+     try{
+          await editProduct(nameProduct, data)
           window.location.reload();
-     
-     })
+     }catch(error){
+          console.log(error)
+     }
+    })
 
      
    
@@ -23,10 +26,10 @@ export const ModalProducts = ({show, handleClose}) => {
     <>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Add Product</Modal.Title>
+          <Modal.Title> edit {productName} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-               <form 
+        <form 
                onSubmit={onSubmit}
                className='col text.center'>
                     <div className='mb-3'>
@@ -34,8 +37,8 @@ export const ModalProducts = ({show, handleClose}) => {
                     type='text'
                     className='form-control'
                     id='floatingInput'
-                    placeholder='name'
-                    {...register('name', {required: true})}
+                    placeholder='newname'
+                    {...register('newname', {required: true})}
                     />
                     {
                          errors.name && (
@@ -86,4 +89,3 @@ export const ModalProducts = ({show, handleClose}) => {
     </>
   )
 }
-
