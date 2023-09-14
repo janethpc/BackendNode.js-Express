@@ -1,18 +1,17 @@
 import {useForm} from 'react-hook-form';
-
 import Modal from 'react-bootstrap/Modal'
-import { AddProduct } from '../api/auth';
+import { AddCategory } from '../api/auth';
 
 
-export const ModalProducts = ({show, handleClose}) => {
+export const ModalCategories = ({show, handleClose}) => {
 
      const {register, handleSubmit, formState: {errors}} = useForm();
     
      
      const onSubmit = handleSubmit(async (data) => {
           //console.log(data)
-          await AddProduct(data)
-          window.location.reload();
+          await AddCategory(data)
+          //window.location.reload();
      
      })
 
@@ -24,7 +23,7 @@ export const ModalProducts = ({show, handleClose}) => {
     <>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Add Product </Modal.Title>
+          <Modal.Title> Add category </Modal.Title>
         </Modal.Header>
         <Modal.Body>
                <form 
@@ -61,24 +60,7 @@ export const ModalProducts = ({show, handleClose}) => {
                          />
                     </div>
 
-                    <div className='mb-3'>
-                         <input
-                         type='number'
-                         placeholder='price'
-                         className='form-control'
-                         {...register('price')}
-                         />
-                    </div>
-
-                    <div className='mb-3'>
-                         <input
-                         type='text'
-                         className='form-control'
-                         placeholder='category'
-                         {...register('category', {required: true})}
-                         />
-                    </div>
-                  
+                                      
                     <button type='submit' className='btn btn-primary'>Save</button>
                    
                </form>
@@ -87,4 +69,3 @@ export const ModalProducts = ({show, handleClose}) => {
     </>
   )
 }
-

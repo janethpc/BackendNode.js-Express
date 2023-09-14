@@ -33,12 +33,51 @@ export const AddProduct = async (productdata) => {
     // Haz algo con la respuesta si es necesario
     response
   } catch (error) {
-    console.error(error);
+    console.error(error.response.data.message);
+    
+  }
+};
+
+export const AddCategory = async (category) => {
+  try{
+    const response = await axios.post(`${API}/category`, category)
+
+    response
+  }catch(error){
+    const allError = error.response.data.message
+   console.log(allError)
   }
 }
 
+export const AddUser = async (user) => {
+  try {
+    const newObject = {
+      "name": user.name,
+      "age": parseInt(user.age),
+      "email": user.email,
+      "password": user.password,
+      "rol": user.rol
+    };
 
+    const response = await axios.post(`${API}/users`, newObject);
 
+    
+    response
+  } catch (error) {
+    console.error(error.response.data.message);
+    
+  }
+};
 
+export const EditCategory = async (categoryName, data) => {
+  try{
+    const response = await axios.put(`${API}/category/${categoryName}`, data)
+
+   console.log( response.data)
+  }catch(error){
+    const allError = error.response.data.message
+   console.log(allError)
+  }
+}
 
 

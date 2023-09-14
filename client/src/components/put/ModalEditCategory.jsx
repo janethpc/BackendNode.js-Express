@@ -1,18 +1,25 @@
 import {useForm} from 'react-hook-form';
-
 import Modal from 'react-bootstrap/Modal'
-import { AddProduct } from '../api/auth';
+import { EditCategory } from '../../api/auth';
 
 
-export const ModalProducts = ({show, handleClose}) => {
+export const ModalEditCategory = ({show, handleClose, categoryname}) => {
 
      const {register, handleSubmit, formState: {errors}} = useForm();
+     const categoryName = categoryname;
     
-     
+    
      const onSubmit = handleSubmit(async (data) => {
           //console.log(data)
-          await AddProduct(data)
-          window.location.reload();
+          try{
+
+            await EditCategory(categoryName, data)
+            //window.location.reload();
+        }catch(error){
+            console.log(error)
+        }
+          
+          
      
      })
 
@@ -24,7 +31,7 @@ export const ModalProducts = ({show, handleClose}) => {
     <>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Add Product </Modal.Title>
+          <Modal.Title> edit {categoryname} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
                <form 
@@ -61,24 +68,7 @@ export const ModalProducts = ({show, handleClose}) => {
                          />
                     </div>
 
-                    <div className='mb-3'>
-                         <input
-                         type='number'
-                         placeholder='price'
-                         className='form-control'
-                         {...register('price')}
-                         />
-                    </div>
-
-                    <div className='mb-3'>
-                         <input
-                         type='text'
-                         className='form-control'
-                         placeholder='category'
-                         {...register('category', {required: true})}
-                         />
-                    </div>
-                  
+                                      
                     <button type='submit' className='btn btn-primary'>Save</button>
                    
                </form>
@@ -87,4 +77,3 @@ export const ModalProducts = ({show, handleClose}) => {
     </>
   )
 }
-
