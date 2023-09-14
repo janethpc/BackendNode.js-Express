@@ -14,7 +14,7 @@ export const ModalEditCategory = ({show, handleClose, categoryname}) => {
           try{
 
             await EditCategory(categoryName, data)
-            //window.location.reload();
+            window.location.reload();
         }catch(error){
             console.log(error)
         }
@@ -42,8 +42,8 @@ export const ModalEditCategory = ({show, handleClose, categoryname}) => {
                     type='text'
                     className='form-control'
                     id='floatingInput'
-                    placeholder='name'
-                    {...register('name', {required: true})}
+                    placeholder='newname'
+                    {...register('newname', {required: true})}
                     />
                     {
                          errors.name && (

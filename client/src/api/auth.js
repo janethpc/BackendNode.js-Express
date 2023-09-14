@@ -73,11 +73,12 @@ export const EditCategory = async (categoryName, data) => {
   try{
     const response = await axios.put(`${API}/category/${categoryName}`, data)
 
-   console.log( response.data)
+   console.log( response)
   }catch(error){
     const allError = error.response.data.message
    console.log(allError)
   }
 }
 
+export const deleteCategory = (categoryName) => axios.delete(`${API}/category/${categoryName}`)
 
