@@ -21,8 +21,9 @@ const userSchema = new mongoose.Schema({ //que va a guardar
         minlength: 6,
         trim: true
     },
-    role:{
-        type: String
+    rol:{
+        type: String,
+        
     }
 },{
     timestamps: true

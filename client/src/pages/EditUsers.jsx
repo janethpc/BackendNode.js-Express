@@ -3,10 +3,16 @@ import { NavBarAdmin } from "../components/NavBarAdmin"
 import { getUsers } from "../api/auth";
 import agregar from '../assets/images/agregar.png';
 import { TableUsers } from "../components/TableUsers";
+import { ModalUser } from "../components/ModalUser";
+
 
 const EditUsers = () => {
 
   const [users, setUsers] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     getUsers()
@@ -16,31 +22,33 @@ const EditUsers = () => {
     .catch(function (error){
       setUsers(error)
     })
-  })
+  }, []);
   return (
-    <div>
-      <div className="contairner text-center">
-              <NavBarAdmin />
-      <h1>CRUD to the product</h1>
+    <>
+    <NavBarAdmin />
+      
       <div className='row mt3'>
         <div className='col-md-4 offset-4'>
           <div className='d-grid mx-auto'>
-            <button className="btn ">
+          <h1>CRUD to the Users</h1>
+          <button type="button" className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleShow}>
               <img src={agregar} alt="añadir" width="50" height="50" className="d-inline-block" />
             </button>
           </div>
         </div>
       </div>
       <div className="row mt-3">
-        <div className="col-12 col-lg-8 offset-0 offset-lg-12">
+        <div className="col-12 col-lg-8 mx-auto">
+          <div className="d-grid mx-auto">
           <div className="table-responsive">
             <table className="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">name</th>
-                  <th scope="col">price</th>
-                  <th scope="col">description</th>
+                  <th scope="col">age</th>
+                  <th scope="col">email</th>
+                  <th scope="col">rol</th>
                   <th scope="col">option</th>
                 </tr>
               </thead>
@@ -58,6 +66,7 @@ const EditUsers = () => {
                         email={user.email}
                         id={user._id}
                         rol={user.rol}
+                        
                       />
                       </tr>
                     </>
@@ -67,11 +76,12 @@ const EditUsers = () => {
             </table>
           </div>
         </div>
-
+</div>
 
       </div>
-      </div>
-    </div>
+      
+      <ModalUser show={show} handleClose={handleClose}/>
+    </>
   )
 }
 
