@@ -32,6 +32,7 @@ export const TableProduct = ({name, price, description, id, category}) => {
                         <td>${new Intl.NumberFormat('es-mx').format(price)}</td>
                         <td>{category}</td>
                         <td>{description}</td>
+                        
                         <td>
                         <button data-bs-toggle="modal" data-bs-target='#modalProducts' onClick={handleShow}>
           <img src={escribir} alt='edit' width="30" height="24" className="d-inline-block" />

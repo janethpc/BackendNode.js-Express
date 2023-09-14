@@ -23,7 +23,7 @@ export const ModalProducts = ({show, handleClose}) => {
     <>
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title> Add Product</Modal.Title>
+          <Modal.Title> Add Product </Modal.Title>
         </Modal.Header>
         <Modal.Body>
                <form 

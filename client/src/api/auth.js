@@ -3,13 +3,7 @@ import axios from 'axios';
 
 const API = "http://localhost:3000/api"
 
-
-export const registerRequest = async (user) =>
-  await axios.post(`${API}/register`, user, { withCredentials: true }); //peticion al backend 
-
-
-export const loginRequest = async (user) => await axios.post(`${API}/login`, user, {withCredentials: true})
-
+//peticiones get
 export const verifyTokenReq = () => axios.get(`${API}/verify`);
 
 
@@ -18,6 +12,17 @@ export const getProductos = () => axios.get(`${API}/products`)
 export const getCategories = () => axios.get(`${API}/category`)
 
 export const getUsers = () => axios.get(`${API}/users`)
+
+
+//peticiones post
+
+export const registerRequest = async (user) =>
+  await axios.post(`${API}/register`, user, { withCredentials: true }); //peticion al backend 
+
+
+export const loginRequest = async (user) => await axios.post(`${API}/login`, user, {withCredentials: true})
+
+
 
 export const AddProduct = async (productdata) => {
   try {
@@ -55,7 +60,6 @@ export const AddUser = async (user) => {
       "name": user.name,
       "age": parseInt(user.age),
       "email": user.email,
-      "password": user.password,
       "rol": user.rol
       
     };
@@ -70,6 +74,7 @@ export const AddUser = async (user) => {
   }
 };
 
+//metodo Put
 export const EditCategory = async (categoryName, data) => {
   try{
     const response = await axios.put(`${API}/category/${categoryName}`, data)
@@ -80,10 +85,6 @@ export const EditCategory = async (categoryName, data) => {
    console.log(allError)
   }
 }
-
-export const deleteCategory = (categoryName) => axios.delete(`${API}/category/${categoryName}`)
-
-export const deleteProduct = (productName) => axios.delete(`${API}/products/${productName}`)
 
 export const editProduct = async (nameProduct, data) => {
   try {
@@ -96,12 +97,39 @@ export const editProduct = async (nameProduct, data) => {
       "category": data.category,
     };
 
-    const response = await axios.put(`${API}/products/${nameProduct}`, newObject);
-
-    
+    const response = await axios.put(`${API}/products/${nameProduct}`, newObject);    
     response
   } catch (error) {
     console.error(error.response.data.message);
     
   }
 };
+
+export const editUser = async (idUser, data) => {
+  try {
+    const newObject = {
+
+      "name": data.name,
+      "age": parseInt(data.age),
+      "email": data.email,
+      "password": data.password,
+      "rol": data.rol
+      
+    };
+
+    const response = await axios.put(`${API}/users/${idUser}`, newObject);
+
+    
+   console.log(response)
+  } catch (error) {
+    console.error(error.response.data.message);
+    
+  }
+};
+
+//metodo delete
+export const deleteCategory = (categoryName) => axios.delete(`${API}/category/${categoryName}`)
+
+export const deleteProduct = (productName) => axios.delete(`${API}/products/${productName}`)
+
+export const deleteUser = (userName) => axios.delete(`${API}/users/${userName}`)
