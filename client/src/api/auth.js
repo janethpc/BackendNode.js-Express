@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+
 
 const API = "http://localhost:3000/api"
 
@@ -18,3 +18,27 @@ export const getProductos = () => axios.get(`${API}/products`)
 export const getCategories = () => axios.get(`${API}/category`)
 
 export const getUsers = () => axios.get(`${API}/users`)
+
+export const AddProduct = async (productdata) => {
+  try {
+    const newObject = {
+      "name": productdata.name,
+      "price": parseInt(productdata.price),
+      "description": productdata.description,
+      "category": productdata.category
+    };
+
+    const response = await axios.post(`${API}/products`, newObject);
+
+    // Haz algo con la respuesta si es necesario
+    response
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+
+
+
