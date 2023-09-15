@@ -7,7 +7,7 @@ const stripe = Stripe(process.env.STRIPE_KEY)
 
 const stripeRouter = Router();
 
-app.post('/create-checkout-session', async (req, res) => {
+stripeRouter.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
@@ -29,4 +29,6 @@ app.post('/create-checkout-session', async (req, res) => {
     res.redirect(303, session.url);
   });
   
-  app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+
+
+  export default stripeRouter
