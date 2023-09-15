@@ -11,7 +11,7 @@ const LoginPages = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(isAuthenticated) navigate('/products')
+    if(isAuthenticated) navigate()
   }, [isAuthenticated]);
 
 

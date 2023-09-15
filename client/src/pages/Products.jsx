@@ -3,6 +3,7 @@ import { getProductos } from "../api/auth";
 import { NavBarUser } from "../components/NavBarUser";
 import productos from '../assets/images/productos.png';
 
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
