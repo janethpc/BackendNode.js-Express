@@ -8,7 +8,6 @@ import routerUser from './routes/user.js';
 import categoryRout from './routes/category.js';
 import routerProduct from './routes/product.js';
 import cors from 'cors';
-import paymentRouter from './routes/payment.route.js';
 
 
 
@@ -44,7 +43,7 @@ server.use('/api', authRouter)
 server.use('/api', routerUser );
 server.use('/api', categoryRout);
 server.use('/api', routerProduct);
-server.use('/api', paymentRouter)
+
 
 //coneccion
 mongoose
