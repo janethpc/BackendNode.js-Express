@@ -77,7 +77,7 @@ authRouter.post('/login', validateSchema(loginSchema), async (req, res) => {
             id: userFound.id,
             name: userFound.name,
             email: userFound.email,
-            rol:  userFound.role 
+            rol:  userFound.rol 
         });
     } catch(error){
         res.status(500).json({message: error.message})

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import comprasImage from '../assets/images/compras.png';
 import carros from '../assets/images/carros.png'
-import '../components/NavBarAdmin.css'
+
 
 export const NavBarUser = () => {
     return (
@@ -23,11 +23,13 @@ export const NavBarUser = () => {
                         <img src={carros} alt="compras" width="30" height="24" className="d-inline-block align-text-top" />
                         
                     </a>
+                   
                             <button className='btn btn-danger btn-sm'>
                             <Link to='/' className='nav-link '>
                             Logout  
                             </Link>
                             </button>
+                        
                         </div>
                     </div>
                 </div>

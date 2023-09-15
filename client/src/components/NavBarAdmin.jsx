@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import comprasImage from '../assets/images/compras.png';
-import '../components/NavBarAdmin.css'
+
 
 export const NavBarAdmin = () => {
     return (

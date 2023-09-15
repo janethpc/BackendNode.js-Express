@@ -44,6 +44,7 @@ server.use('/api', routerUser );
 server.use('/api', categoryRout);
 server.use('/api', routerProduct);
 
+
 //coneccion
 mongoose
     .connect(process.env.MONGODB, {useNewUrlParser: true,
