@@ -26,12 +26,12 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await registerRequest(user);
       const userDataWithRole = res.data;
-      const userIsAdmin = userDataWithRole.rol === "admin";
+      const userIsAdmin = userDataWithRole.role === "admin";
 
       //console.log(res.data);
-      setUser(res.data)
+      setUser(userDataWithRole)
       setIsAuthenticated(true)
-      setIsAdmin(userIsAdmin)
+      setIsAdmin(userIsAdmin.role === "admin")
 
       if (userIsAdmin) {
         navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
@@ -49,11 +49,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(user);
       const userDataWithRole = res.data;
-      const userIsAdmin = userDataWithRole.rol === "admin";
-
-      setUser(res.data);
+      const userIsAdmin = userDataWithRole.role === "admin"      
+      setUser(userDataWithRole);
       setIsAuthenticated(true);
-      setIsAdmin(userIsAdmin)
+      setIsAdmin(userDataWithRole === "admin")
 
       if (userIsAdmin) {
         navigate('/profile/admin'); // Redirige a la ruta del panel de administrador

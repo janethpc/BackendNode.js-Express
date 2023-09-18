@@ -1,8 +1,16 @@
 import axios from 'axios';
 
 
-const API = "http://localhost:3000/api"
+export const API = "http://localhost:3000/api"
 
+export const setHeaders = () => {
+  const headers = {
+    headers: {
+      "x-auth-token": localStorage.getItem("token")
+    }
+  }
+  return headers
+};
 //peticiones get
 export const verifyTokenReq = () => axios.get(`${API}/verify`);
 
@@ -60,7 +68,7 @@ export const AddUser = async (user) => {
       "name": user.name,
       "age": parseInt(user.age),
       "email": user.email,
-      "rol": user.rol
+      "role": user.role
       
     };
 
@@ -73,6 +81,16 @@ export const AddUser = async (user) => {
     
   }
 };
+
+export const checkoutSession = async (checOut) => {
+  try{
+    const response = await axios.post(`${API}/create-checkout-session`, checOut);
+    response
+  }catch(error){
+console.log(error.response.data.message)
+  }
+  
+}
 
 //metodo Put
 export const EditCategory = async (categoryName, data) => {
@@ -113,7 +131,7 @@ export const editUser = async (idUser, data) => {
       "age": parseInt(data.age),
       "email": data.email,
       "password": data.password,
-      "rol": data.rol
+      "role": data.role
       
     };
 

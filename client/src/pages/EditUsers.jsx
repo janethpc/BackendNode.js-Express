@@ -48,7 +48,7 @@ const EditUsers = () => {
                   <th scope="col">name</th>
                   <th scope="col">age</th>
                   <th scope="col">email</th>
-                  <th scope="col">rol</th>
+                  <th scope="col">role</th>
                   <th scope="col">option</th>
                 </tr>
               </thead>
@@ -65,7 +65,7 @@ const EditUsers = () => {
                         age={user.age}
                         email={user.email}
                         id={user._id}
-                        rol={user.rol}
+                        role={user.role}
                         
                       />
                       </tr>

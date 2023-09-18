@@ -1,3 +1,4 @@
+
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import RegisterPages from './pages/RegisterPages';
 import LoginPages from './pages/LoginPages';
@@ -40,4 +41,3 @@ const App = () => {
 }
 
 export default App
-
