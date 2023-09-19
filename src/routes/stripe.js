@@ -21,10 +21,20 @@ stripeRouter.post('/create-checkout-session', async (req, res) => {
           },
           quantity: 1,
         },
+        {
+          price_data: {
+            currency: 'mxn',
+            product_data: {
+              name: 'example art',
+            },
+            unit_amount: 1500,
+          },
+          quantity: 1,
+        },
       ],
       mode: 'payment',
       success_url: `${process.env.CLIENT_URL}/checkout-success`,
-      cancel_url: `${process.env.CLIENT_URL}//products`,
+      cancel_url: `${process.env.CLIENT_URL}/profile`,
     });
   
     res.send({url: session.url});

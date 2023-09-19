@@ -1,9 +1,20 @@
+import { NavBarUser } from "../components/NavBarUser"
 
 
 export const CheckoutSuccess = () => {
-  return (
-    <div>
+  
+
+    
+  
+    return (
+    <>
+    <NavBarUser/>
        <h1> checkout Success </h1>
-    </div>
+
+       
+       
+       
+
+    </>
   )
 }
