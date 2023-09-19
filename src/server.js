@@ -3,13 +3,16 @@ import mongoose from 'mongoose';
 import { config } from 'dotenv';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
-import authRouter from './routes/auth.js';
+//import authRouter from './routes/auth.js';
 import routerUser from './routes/user.js';
 import categoryRout from './routes/category.js';
 import routerProduct from './routes/product.js';
 import cors from 'cors';
+import stripeRouter from './routes/stripe.js';
+import registerAuth from './routes/register.js';
+import loginRouter from './routes/login.js';
 
-
+stripeRouter
 
 
 //cargar variable de entonro 
@@ -39,11 +42,13 @@ server.get('/', (req, res) => {
 
 
 //url api
-server.use('/api', authRouter)
+//server.use('/api', authRouter);
+server.use('/api', registerAuth);
+server.use('/api', loginRouter);
 server.use('/api', routerUser );
 server.use('/api', categoryRout);
 server.use('/api', routerProduct);
-
+server.use('/api', stripeRouter);
 
 //coneccion
 mongoose

@@ -5,7 +5,7 @@ import { deleteUser } from '../api/auth';
 import { ModalEditUser } from './put/ModalEditUser';
 
 
-export const TableUsers = ({name, age, email, rol, id}) => {
+export const TableUsers = ({name, age, email, role, id}) => {
   const [show, setShow] = useState(false);
 
 
@@ -26,7 +26,7 @@ export const TableUsers = ({name, age, email, rol, id}) => {
       <td key={id}>{name}</td>
                         <td>{age}</td>
                         <td>{email}</td>
-                        <td>{rol}</td>
+                        <td>{role}</td>
                         <td>
                         <button data-bs-toggle="modal" data-bs-target='#modalProducts' onClick={handleShow}>
           <img src={escribir} alt='edit' width="30" height="24" className="d-inline-block" />

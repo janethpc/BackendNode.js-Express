@@ -62,8 +62,8 @@ export const ModalEditUser = ({show, handleClose, userId, name}) => {
           <input
             type="text"
             className="form-control rounded"
-            placeholder="rol"
-            {...register('rol')}
+            placeholder="role"
+            {...register('role')}
           />
         </div>
 

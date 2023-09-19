@@ -4,13 +4,16 @@ import { NavBarAdmin } from "../components/NavBarAdmin"
 import agregar from '../assets/images/agregar.png';
 import { ModalProducts } from "../components/ModalProducts";
 import { TableProduct } from "../components/TableProduct";
+import { useAuth } from '../context/AuthContext';
 
 
 
 const EditProducts = () => {
 
   const [products, setProducts] = useState([]);
+  
   const [show, setShow] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true)
@@ -20,13 +23,14 @@ const EditProducts = () => {
       .then(response => {
         console.log(response.data)
         setProducts(response.data)
+        isAuthenticated
       })
       .catch(function (error) {
         setProducts(error)
       })
   }, []);
 
- 
+ console.log(isAuthenticated)
   return (
     < >
        <NavBarAdmin />

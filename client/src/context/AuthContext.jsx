@@ -25,36 +25,29 @@ export const AuthProvider = ({ children }) => {
   const singUp = async (user, navigate) => {
     try {
       const res = await registerRequest(user);
-      const userDataWithRole = res.data;
-      const userIsAdmin = userDataWithRole.rol === "admin";
-
-      //console.log(res.data);
-      setUser(res.data)
-      setIsAuthenticated(true)
-      setIsAdmin(userIsAdmin)
-
-      if (userIsAdmin) {
-        navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
-      } else {
-        navigate('/profile'); // Redirige a la ruta del usuario normal
-      }
-
+      const userData = res.data; // Obtiene la información del usuario
+      setUser(userData);
+      setIsAuthenticated(true);
+      navigate('/profile'); // Redirige a la ruta del perfil del usuario
     } catch (error) {
       console.log(error.response.data)
       setAllError(error.response.data)
     }
-  };
+};
 
   const signin = async (user, navigate) => {
+  
     try {
       const res = await loginRequest(user);
-      const userDataWithRole = res.data;
-      const userIsAdmin = userDataWithRole.rol === "admin";
+      
+      const userDataWithRole = res.data.user;
+      const userIsAdmin = userDataWithRole.role
+      //console.log(userIsAdmin)
 
-      setUser(res.data);
+      setUser(userDataWithRole);
       setIsAuthenticated(true);
       setIsAdmin(userIsAdmin)
-
+      
       if (userIsAdmin) {
         navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
       } else {

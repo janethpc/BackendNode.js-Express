@@ -43,9 +43,9 @@ routerUser.get('/users/:id', async (req, res) => {
 routerUser.put('/users/:id', async (req, res) => {
     try{
         const {id} = req.params;
-        const {name, age, email, rol} = req.body;
+        const {name, age, email, role} = req.body;
 
-        const user = await userSchema.findByIdAndUpdate(id, {name, age, email, rol}, {new: true});
+        const user = await userSchema.findByIdAndUpdate(id, {name, age, email, role}, {new: true});
 
         if(!user){
             return res.status(500).json({message: 'User not found'})

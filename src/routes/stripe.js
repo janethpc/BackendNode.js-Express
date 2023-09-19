@@ -3,16 +3,17 @@ import Stripe from "stripe";
 import { config } from 'dotenv';
 
 config()
+
 const stripe = Stripe(process.env.STRIPE_KEY)
 
 const stripeRouter = Router();
 
-app.post('/create-checkout-session', async (req, res) => {
+stripeRouter.post('/create-checkout-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
           price_data: {
-            currency: 'usd',
+            currency: 'mxn',
             product_data: {
               name: 'T-shirt',
             },
@@ -22,11 +23,13 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:4242/success',
-      cancel_url: 'http://localhost:4242/cancel',
+      success_url: `${process.env.CLIENT_URL}/checkout-success`,
+      cancel_url: `${process.env.CLIENT_URL}//products`,
     });
   
-    res.redirect(303, session.url);
+    res.send({url: session.url});
   });
   
-  app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+
+
+  export default stripeRouter

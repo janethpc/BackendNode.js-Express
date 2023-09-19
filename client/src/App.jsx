@@ -1,3 +1,4 @@
+
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import RegisterPages from './pages/RegisterPages';
 import LoginPages from './pages/LoginPages';
@@ -11,6 +12,7 @@ import EditUsers from './pages/EditUsers';
 import EditProducts from './pages/EditProducts';
 import ProtectedRouter from './protectedRouter';
 import './App.css'
+import { CheckoutSuccess } from './pages/checkoutSuccess';
 
 
 
@@ -32,6 +34,7 @@ const App = () => {
       <Route path='/profile/admin' element={<AdminProfile/>}/>
       <Route path='/category' element={<Categories/>}/>
       <Route path='/user' element={<EditUsers/>}/>
+      <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
       </Route>
       </Routes>
     </BrowserRouter>
@@ -40,4 +43,3 @@ const App = () => {
 }
 
 export default App
-

@@ -1,8 +1,12 @@
 import { NavBarAdmin } from "../components/NavBarAdmin"
 import adminPage from '../assets/images/adminPage.png'
+
 import './AdminProfile.css'
 
 const AdminProfile = () => {
+  
+  
+
   return (
     < >
     <NavBarAdmin/>

@@ -1,13 +1,14 @@
 import axios from 'axios';
 
 
-const API = "http://localhost:3000/api"
+export const API = "http://localhost:3000/api"
+
 
 //peticiones get
 export const verifyTokenReq = () => axios.get(`${API}/verify`);
 
 
-export const getProductos = () => axios.get(`${API}/products`)
+export const getProductos = () => axios.get(`${API}/products`);
 
 export const getCategories = () => axios.get(`${API}/category`)
 
@@ -60,7 +61,7 @@ export const AddUser = async (user) => {
       "name": user.name,
       "age": parseInt(user.age),
       "email": user.email,
-      "rol": user.rol
+      "role": user.role
       
     };
 
@@ -73,6 +74,8 @@ export const AddUser = async (user) => {
     
   }
 };
+
+
 
 //metodo Put
 export const EditCategory = async (categoryName, data) => {
@@ -113,7 +116,7 @@ export const editUser = async (idUser, data) => {
       "age": parseInt(data.age),
       "email": data.email,
       "password": data.password,
-      "rol": data.rol
+      "role": data.role
       
     };
 
