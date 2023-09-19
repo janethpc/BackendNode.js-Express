@@ -41,3 +41,10 @@ In this application, an administrator role can be created from the backend. This
 
 - Email: [admin@example.com]
 - Password: [123456]
+
+-Email: [usuario1@demo.com]
+-Password: [123456]
+
+-test cards
+
+![Test Cards](./src/assets/images/testcards.png)

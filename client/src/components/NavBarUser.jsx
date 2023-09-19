@@ -14,7 +14,7 @@ export const NavBarUser = () => {
                     </a>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <Link to="/products" className="nav-link" id='colorFond'>
+                            <Link to="/profile" className="nav-link" id='colorFond'>
                                 Products
                             </Link>
                         </ul>
@@ -25,7 +25,7 @@ export const NavBarUser = () => {
                     </a>
                    
                             <button className='btn btn-danger btn-sm'>
-                            <Link to='/' className='nav-link '>
+                            <Link to='/login' className='nav-link '>
                             Logout  
                             </Link>
                             </button>
