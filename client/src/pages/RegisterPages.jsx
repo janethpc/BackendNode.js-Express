@@ -1,18 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import { useEffect } from 'react';
+
 import {Link, useNavigate} from 'react-router-dom';
 
 
 const RegisterPages = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {singUp, isAuthenticated, allErrors} = useAuth();
+    const {singUp, allErrors} = useAuth();
     const navigate = useNavigate();
 
-    useEffect(() => {
-      if(isAuthenticated) navigate('/profile')
-    }, [isAuthenticated]);
+   
 
     const onSubmit = handleSubmit( async (values) => {
       singUp(values, navigate)

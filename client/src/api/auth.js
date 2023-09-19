@@ -3,19 +3,12 @@ import axios from 'axios';
 
 export const API = "http://localhost:3000/api"
 
-export const setHeaders = () => {
-  const headers = {
-    headers: {
-      "x-auth-token": localStorage.getItem("token")
-    }
-  }
-  return headers
-};
+
 //peticiones get
 export const verifyTokenReq = () => axios.get(`${API}/verify`);
 
 
-export const getProductos = () => axios.get(`${API}/products`)
+export const getProductos = () => axios.get(`${API}/products`);
 
 export const getCategories = () => axios.get(`${API}/category`)
 
@@ -82,15 +75,7 @@ export const AddUser = async (user) => {
   }
 };
 
-export const checkoutSession = async (checOut) => {
-  try{
-    const response = await axios.post(`${API}/create-checkout-session`, checOut);
-    response
-  }catch(error){
-console.log(error.response.data.message)
-  }
-  
-}
+
 
 //metodo Put
 export const EditCategory = async (categoryName, data) => {

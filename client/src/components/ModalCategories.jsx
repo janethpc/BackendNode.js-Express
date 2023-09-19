@@ -11,7 +11,7 @@ export const ModalCategories = ({show, handleClose}) => {
      const onSubmit = handleSubmit(async (data) => {
           //console.log(data)
           await AddCategory(data)
-          //window.location.reload();
+          window.location.reload();
      
      })
 

@@ -1,25 +1,21 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState } from 'react';
+
 
 const LoginPages = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { signin, isAuthenticated, isAdmin, allErrors } = useAuth();
+  const [userInfo, setUserInfo] =useState({})
+  const { signin, allErrors} = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      if (isAdmin) {
-        navigate('/profile/admin'); // Redirige a la ruta del panel de administrador
-      } else {
-        navigate('/profile'); // Redirige a la ruta del usuario normal
-      }
-    }
-  }, [isAuthenticated, isAdmin, navigate]);
+  console.log(userInfo)
 
   const onSubmit = handleSubmit((data) => {
     signin(data, navigate);
+    setUserInfo(data);
+
   });
 
   return (

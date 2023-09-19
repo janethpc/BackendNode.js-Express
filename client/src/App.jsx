@@ -12,6 +12,7 @@ import EditUsers from './pages/EditUsers';
 import EditProducts from './pages/EditProducts';
 import ProtectedRouter from './protectedRouter';
 import './App.css'
+import { CheckoutSuccess } from './pages/checkoutSuccess';
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
       <Route path='/profile/admin' element={<AdminProfile/>}/>
       <Route path='/category' element={<Categories/>}/>
       <Route path='/user' element={<EditUsers/>}/>
+      <Route path='/checkout-success' element={<CheckoutSuccess/>}/>
       </Route>
       </Routes>
     </BrowserRouter>

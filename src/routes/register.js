@@ -10,6 +10,7 @@ const registerAuth = Router();
 registerAuth.post("/register", async (req, res) => {
     const schema = Joi.object({
         name: Joi.string().required(),
+        age: Joi.number().required(),
         email: Joi.string().required(),
         password: Joi.string().required(),
     });
@@ -21,9 +22,9 @@ registerAuth.post("/register", async (req, res) => {
     let user = await User.findOne({email: req.body.email});
     if(user) return res.status(400).send('User already exists...');
 
-    const {name, email, password} = req.body;
+    const {name, email, age, password} = req.body;
 
-    user = new User({name, email, password});
+    user = new User({name, email, age, password});
 
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -32,7 +33,7 @@ registerAuth.post("/register", async (req, res) => {
 
     const token = generateAuthToken(user);
 
-    res.send(token);
+    res.send({token, user});
 
 })
 
